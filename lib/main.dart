@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(LearnScaffold());
 }
 
 class MyApp extends StatelessWidget {
@@ -24,7 +24,137 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: HelloApp(),
+    );
+  }
+}
+
+class HelloApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        alignment: Alignment.center,
+        child: Text("Hey man!"),
+      ),
+    );
+  }
+}
+
+class TestThis extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.lightGreen,
+        appBar: AppBar(
+          backgroundColor: Colors.green,
+          title: Text("Test this"),
+        ),
+        body: Container(
+          child: Center(
+            child: Text("Hey green man!"),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class LearnContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Container test"),
+        ),
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          //color: Colors.blueAccent,
+          margin: EdgeInsets.all(30),
+          padding: EdgeInsets.all(30),
+          alignment: Alignment.center,
+          //transform: Matrix4.rotationZ(0.5),
+          decoration:
+              BoxDecoration(border: Border.all(color: Colors.black, width: 3)),
+          child: (Text("This is inside a container!")),
+        ),
+      ),
+    );
+  }
+}
+
+class LearnScaffold extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Learn Scaffold"),
+        ),
+        body: Center(
+          child: Text(
+            "This is a test Scaffold",
+            style: TextStyle(
+              color: Colors.black,
+              fontStyle: FontStyle.italic,
+              fontSize: 40.0,
+            ),
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          elevation: 10.0,
+          child: Icon(Icons.add),
+          onPressed: () {},
+        ),
+        drawer: Drawer(
+          child: ListView(
+            children: const <Widget>[
+              DrawerHeader(
+                decoration: BoxDecoration(color: Colors.green),
+                child: Text(
+                  "LearnDrawer",
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 10,
+                  ),
+                ),
+              ),
+              ListTile(
+                title: Text("item 1"),
+                leading: Icon(Icons.people),
+              ),
+              ListTile(
+                title: Text("item 2"),
+                leading: Icon(Icons.mail),
+              ),
+            ],
+          ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          //currentIndex: 0,
+          fixedColor: Colors.green,
+          items: [
+            BottomNavigationBarItem(
+              label: "Home",
+              icon: Icon(Icons.home),
+            ),
+            BottomNavigationBarItem(
+              label: "Search",
+              icon: Icon(Icons.search),
+            ),
+            BottomNavigationBarItem(
+              label: "Circle",
+              icon: Icon(Icons.account_circle),
+            ),
+          ],
+          onTap: (int index) {
+            //empty
+          },
+        ),
+      ),
     );
   }
 }
@@ -113,3 +243,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
